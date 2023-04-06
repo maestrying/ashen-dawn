@@ -10,6 +10,7 @@ public class SceneChanger : MonoBehaviour
 
     [SerializeField] private Vector3 _position;
     [SerializeField] private VectorValue _positionStorage;
+    [SerializeField] private SpriteRenderer _characterSprite; 
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class SceneChanger : MonoBehaviour
     public void FadeComplete()
     {
         _positionStorage.initialValue = _position;
+        _positionStorage.flipPlayer = _characterSprite.flipX;
         SceneManager.LoadScene(_indexScene);
     }
 }
