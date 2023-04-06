@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Character
+  - UI_Buttons
+  - PauseMenu
+  - ActionButton
   layers:
   - Default
   - TransparentFX

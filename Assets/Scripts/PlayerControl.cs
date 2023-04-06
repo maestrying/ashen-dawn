@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private bool _pcMode; // Для удобства, позже - удалить
     private Vector3 _input;
     private bool _IsMoving;
     
@@ -29,6 +30,8 @@ public class PlayerControl : MonoBehaviour
 
     private void Move()
     {
+        if (_pcMode) _input = new Vector2(Input.GetAxis("Horizontal"), 0); // Для удобства, позже - удалить
+
         transform.position += _input * _speed * Time.deltaTime;
 
         _IsMoving = _input.x != 0 ? true : false;
@@ -52,6 +55,6 @@ public class PlayerControl : MonoBehaviour
 
     public void OnButtonUp() 
     {
-        _input = new Vector2(Input.GetAxis("Horizontal"), 0); // Заменить на вектор (0, 0)
+        _input = new Vector2(0, 0);
     }
 }

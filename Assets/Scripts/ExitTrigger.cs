@@ -11,14 +11,14 @@ public class ExitTrigger : MonoBehaviour
    {
        if (other.CompareTag("Character")) 
        {
-            _anim.SetBool("IsTriggered", true);
+            _anim.SetTrigger("IsTriggered");
        }
    }
    private void OnTriggerExit2D(Collider2D other)
    {
        if (other.CompareTag("Character"))
        {
-          _anim.SetBool("IsTriggered", false);  
+            _anim.SetTrigger("IsTriggered");
        }
    }
 }
