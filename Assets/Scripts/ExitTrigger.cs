@@ -21,7 +21,7 @@ public class ExitTrigger : MonoBehaviour
    {
        if (other.CompareTag("Character"))
        {
-          _anim.SetBool("IsTriggered", false);  
+            _anim.SetTrigger("IsTriggered");
        }
    }
 }
