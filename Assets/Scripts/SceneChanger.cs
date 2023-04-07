@@ -12,9 +12,6 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] private VectorValue _positionStorage;
     [SerializeField] private SpriteRenderer _characterSprite; 
 
-    private void FixedUpdate() {
-        Debug.Log(_indexScene);
-    }
     private void Start()
     {
         _anim = GetComponent<Animator>();
