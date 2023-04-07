@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private bool _pcMode; // ��� ��������, ����� - �������
+    [SerializeField] private bool _pcMode; // delete later
     private Vector3 _input;
     private bool _IsMoving;
     
@@ -13,16 +13,16 @@ public class PlayerControl : MonoBehaviour
     private PlayerAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
     [SerializeField] private VectorValue _position;
-    [SerializeField] private bool _enableVectorPosition;
+    [SerializeField] private bool _enableVectorPosition; // delete later
 
     private void Start()
     {
-        _characterSprite.flipX = _position.flipPlayer;
+        _characterSprite.flipX = _position.flipPlayer; 
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
 
-        if (_enableVectorPosition) {
+        if (_enableVectorPosition) { // delete later
             transform.position = _position.initialValue;
         }
     }
@@ -34,7 +34,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Move()
     {
-        if (_pcMode) _input = new Vector2(Input.GetAxis("Horizontal"), 0); // ��� ��������, ����� - �������
+        if (_pcMode) _input = new Vector2(Input.GetAxis("Horizontal"), 0); // delete later
 
         transform.position += _input * _speed * Time.deltaTime;
 
