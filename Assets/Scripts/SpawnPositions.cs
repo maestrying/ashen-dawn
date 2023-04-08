@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu]
 public class SpawnPositions : ScriptableObject
 {
-    public Dictionary<string, Vector3> positions = new Dictionary<string, Vector3>()
+    [Serializable] 
+    public struct lastCharacterScenePositions
     {
-        {"2-3", new Vector3(3,3,3)}
-    };
+        public int indexScene;
+        public Vector3 position;
+    }
+    public lastCharacterScenePositions[] Scenes;
 }

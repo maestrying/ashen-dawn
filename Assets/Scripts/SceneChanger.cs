@@ -8,7 +8,9 @@ using UnityEngine.UIElements;
 public class SceneChanger : MonoBehaviour
 {
     private Animator _anim;
-    public static int _indexScene;
+
+    public static int indexScene;
+    public static Vector3 position;
 
     private void Start()
     {
@@ -22,7 +24,6 @@ public class SceneChanger : MonoBehaviour
 
     public void FadeComplete()
     {
-        SceneManager.LoadScene(_indexScene);
-        
+        SceneManager.LoadScene(indexScene);
     }
 }

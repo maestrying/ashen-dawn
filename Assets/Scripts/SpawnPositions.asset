@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2af4e074957b9a9498d408fa2203a811, type: 3}
-  m_Name: New Spawn Positions
+  m_Name: SpawnPositions
   m_EditorClassIdentifier: 
-  currentScene: 0
-  nextScene: 0
-  position: {x: 0, y: 0, z: 0}
+  Scenes:
+  - indexScene: 2
+    position: {x: 1, y: 2, z: 3}
+  - indexScene: 0
+    position: {x: 0, y: 0, z: 0}

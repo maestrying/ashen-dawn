@@ -14,7 +14,7 @@ public class SceneChangeTrigger : MonoBehaviour
     }
     public void changeScene()
     {
-        SceneChanger._indexScene = _indexScene;
+        SceneChanger.indexScene = _indexScene;
         _sceneChanger.Fade();
        
     }

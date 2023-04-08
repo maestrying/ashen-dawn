@@ -12,11 +12,14 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private PlayerAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
+    private AudioSource _moveSound;
 
     private void Start()
     {
+        if (SceneChanger.position != new Vector3(0,0,0)) transform.position = SceneChanger.position;
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
+        _moveSound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -42,15 +45,18 @@ public class PlayerControl : MonoBehaviour
     public void OnLeftButtonDown()
     {
         _input = new Vector2(-1, 0);
+        _moveSound.Play();
     }
 
     public void OnRightButtonDown()
     {
         _input = new Vector2(1, 0);
+        _moveSound.Play();
     }
 
     public void OnButtonUp() 
     {
         _input = new Vector2(0, 0);
+        _moveSound.Stop();
     }
 }

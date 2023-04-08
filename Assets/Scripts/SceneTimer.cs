@@ -19,7 +19,7 @@ public class SceneTimer : MonoBehaviour
 
         if (_time <= 0 )
         {
-            SceneChanger._indexScene = _indexScene;
+            SceneChanger.indexScene = _indexScene;
             changer.Fade();
         }
     }
