@@ -1,16 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class SceneChanger : MonoBehaviour
 {
     private Animator _anim;
-    [SerializeField] public static int _indexScene;
-
-    [SerializeField] private Vector3 _position;
-    [SerializeField] private VectorValue _positionStorage;
-    [SerializeField] private SpriteRenderer _characterSprite; 
+    public static int _indexScene;
 
     private void Start()
     {
@@ -24,8 +22,7 @@ public class SceneChanger : MonoBehaviour
 
     public void FadeComplete()
     {
-        _positionStorage.initialValue = _position;
-        _positionStorage.flipPlayer = _characterSprite.flipX;
         SceneManager.LoadScene(_indexScene);
+        
     }
 }

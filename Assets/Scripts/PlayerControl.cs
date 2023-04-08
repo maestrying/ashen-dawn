@@ -12,19 +12,11 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private PlayerAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
-    [SerializeField] private VectorValue _position;
-    [SerializeField] private bool _enableVectorPosition; // delete later
 
     private void Start()
     {
-        _characterSprite.flipX = _position.flipPlayer; 
-
         _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
-
-        if (_enableVectorPosition) { // delete later
-            transform.position = _position.initialValue;
-        }
     }
 
     private void FixedUpdate()
