@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -12,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _buttons;
     [SerializeField] private SceneChanger _sceneChanger;
+    [SerializeField] private SettingsManager _settingsManager;
 
 
 
@@ -62,6 +60,7 @@ public class PauseMenu : MonoBehaviour
     {
         _buttons.SetActive(true);
         _settings.SetActive(false);
+        _settingsManager.SaveSettings();
     }
 
     public void ToMenu()

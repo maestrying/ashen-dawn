@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ExitTrigger : MonoBehaviour
 {
-
     Animator _anim;
-    [SerializeField] public int indexNextScene;
+    [SerializeField] private int indexNextScene;
     public Vector3 nextPosition; 
 
     public void Awake()
@@ -17,20 +12,20 @@ public class ExitTrigger : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-   {
+    {
         if (other.CompareTag("Character"))
         {
             _anim.SetTrigger("IsTriggered");
             SceneChanger.indexScene = indexNextScene;
             SceneChanger.position = nextPosition;
         }
-   }
+    }
    
    private void OnTriggerExit2D(Collider2D other)
    {
        if (other.CompareTag("Character"))
        {
             _anim.SetTrigger("IsTriggered");
-        }
+       }
    }
 }
