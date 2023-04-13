@@ -8,6 +8,7 @@ TagManager:
   - UI_Buttons
   - PauseMenu
   - ActionButton
+  - Settings
   layers:
   - Default
   - TransparentFX

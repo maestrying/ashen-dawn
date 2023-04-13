@@ -6,10 +6,16 @@ using UnityEngine.UI;
 
 public class ActionButton : MonoBehaviour
 {
-    public string actionType;
+    [HideInInspector] public static string actionType;
     [SerializeField] private Sprite _changeSceneTexture;
     [SerializeField] private Sprite _musicTexture;
+    [SerializeField] private Sprite _dialogueTexture;
+    [SerializeField] private Sprite _getItemTexture;
 
+    public void Update()
+    {
+        Debug.Log(actionType);
+    }
     public void setTextureButton()
     {
         switch (actionType)
@@ -19,8 +25,16 @@ public class ActionButton : MonoBehaviour
                 Debug.Log(GetComponent<Image>().sprite);
                 break;
 
-            case "Music":
+            case "MusicObject":
                 GetComponent<Image>().sprite = _musicTexture;
+                Debug.Log(GetComponent<Image>().sprite);
+                break;
+            case "Dialogue":
+                GetComponent<Image>().sprite = _dialogueTexture;
+                Debug.Log(GetComponent<Image>().sprite);
+                break;
+            case "GetItem":
+                GetComponent<Image>().sprite = _getItemTexture;
                 Debug.Log(GetComponent<Image>().sprite);
                 break;
         }

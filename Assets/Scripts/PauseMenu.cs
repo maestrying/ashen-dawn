@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -8,6 +6,10 @@ public class PauseMenu : MonoBehaviour
     private GameObject _uiButtons;
     private Animator _activeButtonAnimator;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _settings;
+    [SerializeField] private GameObject _buttons;
+    [SerializeField] private SceneChanger _sceneChanger;
+    [SerializeField] private SettingsManager _settingsManager;
 
 
 
@@ -36,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         _uiButtons.SetActive(false);
         Time.timeScale = 0f;
+        AudioListener.pause = true;
     }
 
     public void Resume()
@@ -44,5 +47,28 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(false);
         _uiButtons.SetActive(true);
         Time.timeScale = 1f;
+        AudioListener.pause = false;
     }
+
+    public void Settings()
+    {
+        _buttons.SetActive(false);
+        _settings.SetActive(true);
+    }
+
+    public void Back()
+    {
+        _buttons.SetActive(true);
+        _settings.SetActive(false);
+        _settingsManager.SaveSettings();
+    }
+
+    public void ToMenu()
+    {
+        Time.timeScale = 1f;
+        _isPaused = false;
+        SceneChanger.indexScene = 1;
+        _sceneChanger.Fade();
+    }
+
 }

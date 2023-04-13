@@ -1930,7 +1930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276751922699, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: orthographic size
-      value: 2.109375
+      value: 2.1875
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276751922702, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_UpdateMethod
@@ -1970,6 +1970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexNextScene: 3
+  nextPosition: {x: -4.58, y: -0.66, z: 0}
 --- !u!58 &1895470289
 CircleCollider2D:
   m_ObjectHideFlags: 0
