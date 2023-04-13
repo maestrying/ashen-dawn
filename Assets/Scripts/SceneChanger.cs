@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -12,9 +9,6 @@ public class SceneChanger : MonoBehaviour
     public static int indexScene;
     public static Vector3 position;
 
-    private void FixedUpdate() {
-        Debug.Log(_indexScene);
-    }
     private void Start()
     {
         _anim = GetComponent<Animator>();
