@@ -102,7 +102,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!95 &3575405420527273982
 Animator:
   serializedVersion: 5
@@ -136,9 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1964c55f2e8e624d8daa55ad2a49819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _indexScene: 1
-  _position: {x: -0.323, y: -0.7546532, z: -0.5}
-  _positionStorage: {fileID: 11400000, guid: b4d1931f4deb19644867ade4ef84f886, type: 2}
 --- !u!1 &3575405420832414347
 GameObject:
   m_ObjectHideFlags: 0
