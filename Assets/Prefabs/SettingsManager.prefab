@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a474de08413bac44aea497200560713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSources: []
+  musicSources:
+  - {fileID: 0}
   soundSources:
   - {fileID: 0}
-  objectsWithSounds:
   - {fileID: 0}
+  - {fileID: 0}
+  objectsWithSounds: []
   musicSlider: {fileID: 0}
   soundSlider: {fileID: 0}

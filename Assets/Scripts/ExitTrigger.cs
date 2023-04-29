@@ -8,7 +8,8 @@ public class ExitTrigger : MonoBehaviour
 
     public void Awake()
     {
-       _anim = GameObject.FindGameObjectWithTag("ActionButton").GetComponent<Animator>();
+       _anim = GameObject.FindGameObjectWithTag("ExitButton").GetComponent<Animator>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -10,6 +10,9 @@ TagManager:
   - ActionButton
   - Settings
   - SceneChanger
+  - ExitButton
+  - InspectWindow
+  - UI
   layers:
   - Default
   - TransparentFX
