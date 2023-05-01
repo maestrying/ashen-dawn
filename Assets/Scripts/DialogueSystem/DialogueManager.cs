@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject dialogueWindow;
+    public Text dialogueText;
     private Queue<string> sentences;
 
     public void Start()
@@ -13,8 +16,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, int id)
     {
-        Debug.Log("Starting dialogue with: " +  dialogue.name);
-
         sentences.Clear();
 
         foreach (Sentences sentence in dialogue.sentences)
@@ -28,6 +29,23 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        NextSentence();
+    }
 
+    public void NextSentence()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        dialogueText.text = sentence;
+    }
+
+    public void EndDialogue()
+    {
+        dialogueWindow.SetActive(false);
     }
 }

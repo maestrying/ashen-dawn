@@ -9,6 +9,7 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private Sprite _dialogueTexture;
     [SerializeField] private Sprite _inspectTexture;
     [SerializeField] private GameObject _inspectWindow;
+    [SerializeField] private GameObject _dialogueWindow;
     [SerializeField] private AudioSource _audioSource;
     private AudioSource _radioEnableSound;
     private GameObject _ui;
@@ -54,6 +55,8 @@ public class ActionButton : MonoBehaviour
                 break;
 
             case "Dialogue":
+                _dialogueWindow.SetActive(true);
+                GameObject.Find("SellerDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
                 break;
 
             case "Inspect":

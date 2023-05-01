@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 [System.Serializable]
 public class Sentences
 {
@@ -10,6 +8,5 @@ public class Sentences
 [System.Serializable]
 public class Dialogue
 {
-    public string name;
     public Sentences[] sentences;
 }
