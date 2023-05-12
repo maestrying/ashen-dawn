@@ -4,7 +4,7 @@ public class ExitTrigger : MonoBehaviour
 {
     Animator _anim;
     [SerializeField] private int indexNextScene;
-    public Vector3 nextPosition; 
+    public Vector3 nextPosition;
 
     public void Awake()
     {
@@ -18,7 +18,7 @@ public class ExitTrigger : MonoBehaviour
         {
             _anim.SetTrigger("IsTriggered");
             SceneChanger.indexScene = indexNextScene;
-            SceneChanger.position = nextPosition;
+            
         }
     }
    

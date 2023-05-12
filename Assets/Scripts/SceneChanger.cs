@@ -15,6 +15,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Fade()
     {
+        
         _anim.SetTrigger("fade");
     }
 
