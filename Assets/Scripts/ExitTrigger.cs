@@ -18,7 +18,7 @@ public class ExitTrigger : MonoBehaviour
         {
             _anim.SetTrigger("IsTriggered");
             SceneChanger.indexScene = indexNextScene;
-            
+            SceneChanger.position = nextPosition;     
         }
     }
    
