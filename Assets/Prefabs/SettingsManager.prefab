@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSources: []
-  soundSources:
-  - {fileID: 0}
+  soundSources: []
   objectsWithSounds:
   - {fileID: 0}
   musicSlider: {fileID: 0}

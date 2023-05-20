@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -9,7 +7,6 @@ public class PlayerControl : MonoBehaviour
     private Vector3 _input;
     private bool _IsMoving;
     
-    private Rigidbody2D _rigidbody;
     private PlayerAnimations _animations;
     [SerializeField] private SpriteRenderer _characterSprite;
     private AudioSource _moveSound;
@@ -17,7 +14,6 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         if (SceneChanger.position != new Vector3(0,0,0)) transform.position = SceneChanger.position;
-        _rigidbody = GetComponent<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
         _moveSound = GetComponent<AudioSource>();
     }

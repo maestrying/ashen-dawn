@@ -4,11 +4,12 @@ public class ExitTrigger : MonoBehaviour
 {
     Animator _anim;
     [SerializeField] private int indexNextScene;
-    public Vector3 nextPosition; 
+    public Vector3 nextPosition;
 
     public void Awake()
     {
-       _anim = GameObject.FindGameObjectWithTag("ActionButton").GetComponent<Animator>();
+       _anim = GameObject.FindGameObjectWithTag("ExitButton").GetComponent<Animator>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,7 +18,7 @@ public class ExitTrigger : MonoBehaviour
         {
             _anim.SetTrigger("IsTriggered");
             SceneChanger.indexScene = indexNextScene;
-            SceneChanger.position = nextPosition;
+            
         }
     }
    

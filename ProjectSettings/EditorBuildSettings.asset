@@ -15,9 +15,21 @@ EditorBuildSettings:
     path: Assets/Scenes/flat.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/entrance.unity
+    path: Assets/Scenes/entrance-3-main.unity
     guid: 692cd8ef659df6e41971c468e8913a18
   - enabled: 1
     path: Assets/Scenes/yard.unity
     guid: 67e30eca443374da196716798cf75ea0
+  - enabled: 1
+    path: Assets/Scenes/entrance-1.unity
+    guid: 5f7c94e189b0c724aa9ab255233bf339
+  - enabled: 1
+    path: Assets/Scenes/entrance-5.unity
+    guid: 4384c3978d95c9b4ab4f4eb8c82df599
+  - enabled: 1
+    path: Assets/Scenes/entrance-8.unity
+    guid: 4b3a2011613a95043906ca1dfcd6e6d0
+  - enabled: 1
+    path: Assets/Scenes/entrance-12.unity
+    guid: a08be600c1ce34d45bb87c56be6c35b5
   m_configObjects: {}

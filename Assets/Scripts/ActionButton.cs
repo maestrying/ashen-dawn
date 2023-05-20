@@ -1,41 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class ActionButton : MonoBehaviour
 {
     [HideInInspector] public static string actionType;
-    [SerializeField] private Sprite _changeSceneTexture;
     [SerializeField] private Sprite _musicTexture;
     [SerializeField] private Sprite _dialogueTexture;
-    [SerializeField] private Sprite _getItemTexture;
+    [SerializeField] private Sprite _inspectTexture;
+    [SerializeField] private GameObject _inspectWindow;
+    [SerializeField] private GameObject _dialogueWindow;
+    [SerializeField] private AudioSource _audioSource;
+    private AudioSource _radioEnableSound;
+    private GameObject _ui;
 
-    public void Update()
+    public void Start()
     {
-        Debug.Log(actionType);
+        _ui = GameObject.FindWithTag("UI");
+        _radioEnableSound = GetComponent<AudioSource>();
+        GameObject.FindGameObjectWithTag("ExitButton").GetComponent<Animator>().keepAnimatorStateOnDisable = true;
     }
+
     public void setTextureButton()
     {
         switch (actionType)
         {
-            case "ChangeScene":
-                GetComponent<Image>().sprite = _changeSceneTexture;
-                Debug.Log(GetComponent<Image>().sprite);
-                break;
-
             case "MusicObject":
                 GetComponent<Image>().sprite = _musicTexture;
-                Debug.Log(GetComponent<Image>().sprite);
                 break;
             case "Dialogue":
                 GetComponent<Image>().sprite = _dialogueTexture;
-                Debug.Log(GetComponent<Image>().sprite);
                 break;
-            case "GetItem":
-                GetComponent<Image>().sprite = _getItemTexture;
-                Debug.Log(GetComponent<Image>().sprite);
+            case "Inspect":
+                GetComponent<Image>().sprite = _inspectTexture;
+                break;
+        }
+    }
+
+    public void doAction()
+    {
+        switch (actionType)
+        {
+            case "MusicObject":
+                _radioEnableSound.Play();
+                Debug.Log(actionType);
+                if (!_audioSource.isPlaying)
+                {
+                    _audioSource.Play();
+                }
+                else
+                {
+                    _audioSource.Stop();
+                }
+                break;
+
+            case "Dialogue":
+                _dialogueWindow.SetActive(true);
+                GameObject.Find("SellerDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
+                break;
+
+            case "Inspect":
+                _ui.SetActive(false);
+                _inspectWindow.SetActive(true);
+                Debug.Log(actionType);
                 break;
         }
     }
