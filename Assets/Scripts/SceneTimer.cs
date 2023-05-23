@@ -9,6 +9,7 @@ public class SceneTimer : MonoBehaviour
     private void Awake()
     {
         changer = GameObject.Find("SceneChanger").GetComponent<SceneChanger>();
+        SceneChanger.indexScene = _indexScene;
     }
 
     private void FixedUpdate()
@@ -17,8 +18,13 @@ public class SceneTimer : MonoBehaviour
 
         if (_time <= 0 )
         {
-            SceneChanger.indexScene = _indexScene;
             changer.Fade();
         }
+    }
+
+    public void Skip()
+    {
+        changer.Fade();
+        Debug.Log("skip");
     }
 }

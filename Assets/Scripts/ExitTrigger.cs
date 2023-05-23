@@ -5,6 +5,7 @@ public class ExitTrigger : MonoBehaviour
     Animator _anim;
     [SerializeField] private int indexNextScene;
     public Vector3 nextPosition;
+    public bool autoChangeScene;
 
     public void Awake()
     {
@@ -16,9 +17,17 @@ public class ExitTrigger : MonoBehaviour
     {
         if (other.CompareTag("Character"))
         {
-            _anim.SetTrigger("IsTriggered");
             SceneChanger.indexScene = indexNextScene;
-            SceneChanger.position = nextPosition;     
+            SceneChanger.position = nextPosition;
+
+            if (autoChangeScene)
+            {
+                FindAnyObjectByType<SceneChanger>().Fade();
+            }
+            else
+            {
+                _anim.SetTrigger("IsTriggered");
+            }
         }
     }
    
