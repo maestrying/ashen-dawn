@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/entrance-12.unity
     guid: a08be600c1ce34d45bb87c56be6c35b5
+  - enabled: 1
+    path: Assets/Scenes/market.unity
+    guid: 8356883ee7e922e4dbd86a3a96509b40
+  - enabled: 1
+    path: Assets/Scenes/street.unity
+    guid: 4c12b2abec48117468fa206328611c7d
   m_configObjects: {}
