@@ -13,6 +13,7 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     private AudioSource _radioEnableSound;
     private GameObject _ui;
+    public static DialogueList dialogueList; 
 
     public void Start()
     {
@@ -56,7 +57,7 @@ public class ActionButton : MonoBehaviour
 
             case "Dialogue":
                 _dialogueWindow.SetActive(true);
-                GameObject.Find("SellerDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
+                dialogueList.StartDialogue();
                 break;
 
             case "Inspect":

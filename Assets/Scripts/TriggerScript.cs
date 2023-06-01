@@ -23,8 +23,17 @@ public class TriggerScript : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             ActionButton.actionType = _triggerType.ToString();
+
+            if (_triggerType == type.Dialogue)
+            {
+                ActionButton.dialogueList = GetComponent<DialogueList>();
+            }
+
+
             FindObjectOfType<ActionButton>().setTextureButton();
             _anim.SetTrigger("IsTriggered");
+
+
         }
     }
 

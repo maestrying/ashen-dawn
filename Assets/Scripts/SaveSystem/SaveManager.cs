@@ -1,65 +1,40 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-    private GameObject _character;
-    private SpriteRenderer _characterSprite;
-    private PlayerData playerData;
-    public static bool isLoading;
+    public ProgressManager progressManager;
 
-    public void Awake()
-    {
-        _character = GameObject.FindWithTag("Character");
-        _characterSprite = _character.GetComponentInChildren<SpriteRenderer>();
-    }
-    public void Start()
-    {
-        if (isLoading)
-        {
-            LoadData();
-            isLoading = false;
-        }
-        
-    }
+    public static bool isLoading;
 
     public void SaveData()
     {
-        SaveSystem.Save("character", characterData());
-        SaveSystem.Save("game", gameData());
+        SaveSystem.Save("character", progressManager.getPlayerData());
+        SaveSystem.Save("game", progressManager.getGameData());
+
+        DebugSave();
     }
 
-    public void LoadData()
+    public PlayerData LoadPlayerData()
     {
-        // characterData
-        playerData = SaveSystem.Load<PlayerData>("character");
-        _character.transform.position = new Vector3(playerData.position_x, playerData.position_y, playerData.position_z);
-        _characterSprite.flipX = playerData.rotation;
+        PlayerData _playerData;
+        _playerData = SaveSystem.Load<PlayerData>("character");
+        return _playerData;
     }
 
-
-
-    // Data
-    private PlayerData characterData()
+    public GameData LoadGameData()
     {
-        var data = new PlayerData()
-        {
-            position_x = _character.transform.position.x,
-            position_y = _character.transform.position.y,
-            position_z = _character.transform.position.z,
-            rotation = _character.GetComponentInChildren<SpriteRenderer>().flipX
-        };
-
-        return data;
+        GameData _gameData;
+        _gameData = SaveSystem.Load<GameData>("gameData");
+        return _gameData;
     }
-    
-    private GameData gameData()
-    {
-        var data = new GameData()
-        {
-            indexScene = SceneManager.GetActiveScene().buildIndex
-        };
 
-        return data;
+    // delete later
+    public void DebugSave()
+    {
+        Debug.Log("______SAVE______");
+        Debug.Log("Scene: " + progressManager.getGameData().indexScene);
+        Debug.Log("position_x: " + progressManager.getPlayerData().position_x);
+        Debug.Log("position_y: " + progressManager.getPlayerData().position_y);
+        Debug.Log("position_z: " + progressManager.getPlayerData().position_z);
     }
 }

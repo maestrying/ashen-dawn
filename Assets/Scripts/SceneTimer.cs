@@ -25,6 +25,5 @@ public class SceneTimer : MonoBehaviour
     public void Skip()
     {
         changer.Fade();
-        Debug.Log("skip");
     }
 }

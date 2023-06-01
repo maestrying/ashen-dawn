@@ -1,12 +1,14 @@
 [System.Serializable]
-public class Sentences
+public class Dialogue
 {
-    public int id;
+    public bool isQuestDialogue;
+    public bool isMonologue;
     public string[] sentences;
 }
 
 [System.Serializable]
-public class Dialogue
+public class NPCDialogues
 {
-    public Sentences[] sentences;
+    public int id;
+    public Dialogue[] dialogues;
 }

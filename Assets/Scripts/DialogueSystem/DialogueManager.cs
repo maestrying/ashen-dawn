@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
     public GameObject dialogueWindow;
     public Text dialogueText;
+    public GameObject ui;
     private Queue<string> sentences;
 
     public void Start()
@@ -14,21 +14,17 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue, int id)
+    public void StartDialogue(NPCDialogues npc, int id)
     {
         sentences.Clear();
+        ui.SetActive(false);
 
-        foreach (Sentences sentence in dialogue.sentences)
+        Dialogue dialogue = npc.dialogues[id];
+        foreach (string sentence in dialogue.sentences)
         {
-            if (sentence.id == id)
-            {
-                foreach(string sentence2 in sentence.sentences)
-                {
-                    sentences.Enqueue(sentence2);
-                }
-            }
+            sentences.Enqueue(sentence);
         }
-
+ 
         NextSentence();
     }
 
@@ -47,5 +43,6 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         dialogueWindow.SetActive(false);
+        ui.SetActive(true);
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - ExitButton
   - InspectWindow
   - UI
+  - SaveManager
   layers:
   - Default
   - TransparentFX

@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e370e82ce5803c43bc285673774a286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressManager: {fileID: 4798828704336416391, guid: b8116eb9f6db5a34188c7efe1ba28824, type: 3}
+  playerData:
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    rotation: 0
+    questItems: []

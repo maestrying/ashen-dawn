@@ -13,7 +13,6 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
-        if (SceneChanger.position != new Vector3(0,0,0)) transform.position = SceneChanger.position;
         _animations = GetComponentInChildren<PlayerAnimations>();
         _moveSound = GetComponent<AudioSource>();
     }
