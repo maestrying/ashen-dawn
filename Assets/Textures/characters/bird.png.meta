@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Textures/yard/home-door.png.meta
-guid: 3b060087eed2b4cdb8f6a4f2cf2984d6
-========
-guid: 8405fbb6a4f494146b693c7adf7e36ea
->>>>>>>> e451e9890c7dc1dd2b5acda10c767d9f70f4c40c:Assets/Textures/entrance/1.png.meta
+guid: 02e8f2ef03f124520a6c7288a10ae150
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
