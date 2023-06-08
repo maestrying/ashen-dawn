@@ -1,15 +1,14 @@
-using System.Diagnostics;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class GameData
 {
     public int indexScene;
-    public int activeQuest;
-    public int notesFilling;
-
+    public List<Quest> Quests;
+    public List<string> notes;
+    public List<string> activeTasks;
     public GameData()
     {
         indexScene = -1;
-        activeQuest = -1;
     }
 }

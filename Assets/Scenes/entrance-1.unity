@@ -385,7 +385,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &133964583
@@ -447,6 +447,14 @@ PrefabInstance:
       propertyPath: soundSlider
       value: 
       objectReference: {fileID: 439379003}
+    - target: {fileID: 866002833048689721, guid: ebc6d7b8ce1eb8d49bfb65bfbf86e666, type: 3}
+      propertyPath: musicSources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 866002833048689721, guid: ebc6d7b8ce1eb8d49bfb65bfbf86e666, type: 3}
+      propertyPath: soundSources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 866002833048689721, guid: ebc6d7b8ce1eb8d49bfb65bfbf86e666, type: 3}
       propertyPath: objectsWithSounds.Array.data[0]
       value: 
@@ -736,7 +744,6 @@ MonoBehaviour:
   indexNextScene: 4
   nextPosition: {x: -18.86, y: -4.292603, z: -0.5}
   autoChangeScene: 1
-  changeSceneSound: {fileID: 0}
 --- !u!58 &537617289
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -967,78 +974,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1226247838 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4793274144648742395, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
-  m_PrefabInstance: {fileID: 1823634436}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1226247840 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2512632706750127282, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
-  m_PrefabInstance: {fileID: 1823634436}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226247838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1226247842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226247838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1226247840}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1918844120}
-        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
-        m_MethodName: selectFloor
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1226247840}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1289645094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,10 +1115,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1757051238}
-    - target: {fileID: 8685743520578568138, guid: ba25f6f87f8b96e42b107821e0717721, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: openHideNotes
-      objectReference: {fileID: 0}
     - target: {fileID: 8685743522114410499, guid: ba25f6f87f8b96e42b107821e0717721, type: 3}
       propertyPath: m_Name
       value: Notes
@@ -1285,6 +1216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5102104917460495363, guid: e147e6f3817533847b097d0c63861ef8, type: 3}
+      propertyPath: progressManager
+      value: 
+      objectReference: {fileID: 1564909049}
     - target: {fileID: 5102104917460495364, guid: e147e6f3817533847b097d0c63861ef8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2227,6 +2162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1964c55f2e8e624d8daa55ad2a49819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1564909049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4798828704336416391, guid: b8116eb9f6db5a34188c7efe1ba28824, type: 3}
+  m_PrefabInstance: {fileID: 2016142630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a5128a1eca0bc46b31e540037dc45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1577649354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,10 +2520,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevatorPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 6882882012977817441, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6882882012977817442, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2678,17 +2620,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6882882012977817441, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
   m_PrefabInstance: {fileID: 1823634436}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1918844120 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6882882012977817443, guid: 4d1d43e446f8a074f851cb1e97b675a4, type: 3}
-  m_PrefabInstance: {fileID: 1823634436}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918844118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11305fac6c39cc4469f9cf5e788aef18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1929241999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,172 +2826,172 @@ MonoBehaviour:
   - position: {x: 3.1852775, y: 0.5786191, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
     uv: {x: 0, y: 0}
-  - position: {x: -1.6912, y: -0.1611, z: 0}
+  - position: {x: -1.7035, y: -0.1701, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.8263, y: -0.2274, z: 0}
+  - position: {x: -1.8385, y: -0.2363, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.9518, y: -0.3104, z: 0}
+  - position: {x: -1.9641, y: -0.3192, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.0657, y: -0.4086, z: 0}
+  - position: {x: -2.078, y: -0.4174, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.1662, y: -0.5206, z: 0}
+  - position: {x: -2.1786, y: -0.5293, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.2517, y: -0.6444, z: 0}
+  - position: {x: -2.264, y: -0.6531, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3207, y: -0.7781, z: 0}
+  - position: {x: -2.3331, y: -0.7868, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3721, y: -0.9195, z: 0}
+  - position: {x: -2.3846, y: -0.9282, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4051, y: -1.0662, z: 0}
+  - position: {x: -2.4176, y: -1.0749, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4192, y: -1.216, z: 0}
+  - position: {x: -2.4318, y: -1.2247, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.4141, y: -1.3664, z: 0}
+  - position: {x: -2.4267, y: -1.3751, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.3899, y: -1.5148, z: 0}
+  - position: {x: -2.4026, y: -1.5236, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.347, y: -1.6591, z: 0}
+  - position: {x: -2.3597, y: -1.6678, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.2861, y: -1.7966, z: 0}
+  - position: {x: -2.2989, y: -1.8054, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.2082, y: -1.9253, z: 0}
+  - position: {x: -2.2211, y: -1.9341, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.1146, y: -2.0431, z: 0}
+  - position: {x: -2.1275, y: -2.0519, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -2.0068, y: -2.148, z: 0}
+  - position: {x: -2.0197, y: -2.1568, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.8864, y: -2.2383, z: 0}
+  - position: {x: -1.8994, y: -2.2472, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.7556, y: -2.3125, z: 0}
+  - position: {x: -1.7686, y: -2.3215, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.6164, y: -2.3696, z: 0}
+  - position: {x: -1.6294, y: -2.3785, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.471, y: -2.4084, z: 0}
+  - position: {x: -1.484, y: -2.4174, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.3219, y: -2.4284, z: 0}
+  - position: {x: -1.3349, y: -2.4375, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2399, y: -2.4313, z: 0}
+  - position: {x: -1.2477, y: -2.4404, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 4.7468, y: -2.4324, z: 0}
+  - position: {x: 4.7518, y: -2.417, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 4.8969, y: -2.4228, z: 0}
+  - position: {x: 4.9019, y: -2.4068, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.0446, y: -2.3942, z: 0}
+  - position: {x: 5.0495, y: -2.3776, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.1875, y: -2.3471, z: 0}
+  - position: {x: 5.1922, y: -2.3299, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.3232, y: -2.2822, z: 0}
+  - position: {x: 5.3276, y: -2.2644, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.4495, y: -2.2005, z: 0}
+  - position: {x: 5.4536, y: -2.1822, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.5644, y: -2.1034, z: 0}
+  - position: {x: 5.5681, y: -2.0846, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.6661, y: -1.9925, z: 0}
+  - position: {x: 5.6693, y: -1.9733, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.7528, y: -1.8695, z: 0}
+  - position: {x: 5.7555, y: -1.85, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.8231, y: -1.7365, z: 0}
+  - position: {x: 5.8253, y: -1.7167, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.876, y: -1.5957, z: 0}
+  - position: {x: 5.8776, y: -1.5757, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.9105, y: -1.4492, z: 0}
+  - position: {x: 5.9115, y: -1.4291, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.9261, y: -1.2996, z: 0}
+  - position: {x: 5.9264, y: -1.2794, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.9249, y: -1.1824, z: 0}
+  - position: {x: 5.9256, y: -1.1759, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.817, y: 0.6335, z: 0}
+  - position: {x: 5.8325, y: 0.6207, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.7985, y: 0.7828, z: 0}
+  - position: {x: 5.8152, y: 0.7701, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.7612, y: 0.9285, z: 0}
+  - position: {x: 5.779, y: 0.9161, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.7057, y: 1.0683, z: 0}
+  - position: {x: 5.7244, y: 1.0563, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.6328, y: 1.1999, z: 0}
+  - position: {x: 5.6525, y: 1.1885, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.5437, y: 1.3212, z: 0}
+  - position: {x: 5.5644, y: 1.3104, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.4399, y: 1.4301, z: 0}
+  - position: {x: 5.4615, y: 1.4201, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.3232, y: 1.525, z: 0}
+  - position: {x: 5.3454, y: 1.5159, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.1953, y: 1.6042, z: 0}
+  - position: {x: 5.2181, y: 1.5961, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 5.0583, y: 1.6665, z: 0}
+  - position: {x: 5.0817, y: 1.6594, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 4.9146, y: 1.7109, z: 0}
+  - position: {x: 4.9383, y: 1.7049, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 4.7664, y: 1.7366, z: 0}
+  - position: {x: 4.7903, y: 1.7317, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 4.6502, y: 1.7434, z: 0}
+  - position: {x: 4.6694, y: 1.7395, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 3.1865, y: 1.7572, z: 0}
+  - position: {x: 3.2072, y: 1.7584, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 3.0363, y: 1.7491, z: 0}
+  - position: {x: 3.0569, y: 1.7508, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 2.8883, y: 1.7219, z: 0}
+  - position: {x: 2.9088, y: 1.724, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 2.7239, y: 1.6675, z: 0}
+  - position: {x: 2.7407, y: 1.6688, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
   m_Triangles: 000003000100010003000200040008000800040008000900040009000a0004000a000b0004000b000c0004000c000d0004000d000e0004000e000f0004000f001000040010001100040011001200040012001300040013001400040014001500040015001600040016001700040017001800040018001900040019001a0004001a001b0004001b001c0004001c001d0004001d001e00040005001f0004001e001f0005001f002000050020002100050021002200050022002300050023002400050024002500050025002600050026002700050027002800050028002900050029002a0005002a002b0005002b002c00050006002d0005002c002d0006002d002e0006002e002f0006002f003000060030003100060031003200060032003300060033003400060034003500060035003600060036003700060037003800060038003900060007003a00060039003a0007003a003b0007003b003c0007003c003d0008000400070008003d000700
   m_LocalBounds:
-    m_Center: {x: 1.7534499, y: -0.3376, z: 0}
-    m_Extent: {x: 4.17265, y: 2.0948, z: 0}
+    m_Center: {x: 1.7473001, y: -0.34099996, z: 0}
+    m_Extent: {x: 4.1791, y: 2.0994, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -3208,7 +3139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276161815064, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6802475
+      value: -1.4802475
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276161815064, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3216,7 +3147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276161815064, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.181716
+      value: -3.2417164
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276161815065, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_Follow
@@ -3228,19 +3159,19 @@ PrefabInstance:
       objectReference: {fileID: 1709709720}
     - target: {fileID: 5752713276751922698, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6795204
+      value: -1.4802735
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276751922698, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12552106
+      value: 0.16006094
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276751922698, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.181716
+      value: -3.2417164
       objectReference: {fileID: 0}
     - target: {fileID: 5752713276751922699, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}
       propertyPath: orthographic size
-      value: 2.109375
+      value: 2.2421875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bddefb2e5d92184ca7bac685996ce44, type: 3}

@@ -1,38 +1,66 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class ProgressManager : MonoBehaviour
 {
+    public static ProgressManager Instance { get; private set; }
+
     public List<Quest> Quests;
-    public GameData gameData;
+    public List<GameObject> NPC;
     public PlayerData playerData;
-    public GameObject character;
-    public SaveManager saveManager;
+    public GameData gameData;
+    private Notes _notes;
+    private GameObject character;
+    private SaveManager saveManager;
 
-    public void Awake()
+    public List<string> notes;
+    public List<string> activeTasks;
+
+    private void Awake()
     {
-        character = GameObject.FindGameObjectWithTag("Character");
-        saveManager = FindFirstObjectByType<SaveManager>();
-        Debug.Log(character, saveManager.gameObject);
-    }
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
     public void Start()
     {
-        updatePlayerData();
-        updateGameData();
+        if (SaveManager.isLoading)
+        {
+            gameData = saveManager.LoadGameData();
+            Quests = gameData.Quests;
+            notes = gameData.notes;
+            activeTasks = gameData.activeTasks;
 
-        
+            _notes.loadNotes();
+
+            SaveManager.isLoading = false;
+        }
+        else
+        {
+            Quests = getGameData().Quests;
+
+            updatePlayerData();
+            updateGameData();
+        }
     }
 
     public void updateGameData()
     {
         gameData.indexScene = SceneManager.GetActiveScene().buildIndex;
+        gameData.Quests = Quests;
+        gameData.activeTasks = activeTasks;
+        gameData.notes = notes;
     }
     public void updatePlayerData()
     {
         playerData = character.GetComponent<Player>().getData();
-        Debug.Log(playerData.position_x);
     }
 
     public PlayerData getPlayerData()
@@ -47,14 +75,62 @@ public class ProgressManager : MonoBehaviour
         return gameData;
     }
 
-    public void setActiveQuest(int id)
+    public List<Quest> getActiveQuests()
     {
-        gameData.activeQuest = id;
-    }
-    public void getQuestItem(string item)
-    {
-        playerData.questItems.Add(item);
+        List<Quest> activeQuests = new List<Quest>();
+
+        foreach (Quest quest in Quests)
+        {
+            if (quest.questState == Quest.state.InProgress)
+            {
+                activeQuests.Add(quest);
+            }
+        }
+
+        return activeQuests;
     }
 
+    public void setActiveQuest(int npcId, int id)
+    {
+       foreach (Quest quest in Quests)
+       {
+            if (quest.npcId == npcId && quest.questId == id)
+            {
+                quest.questState = Quest.state.InProgress;
+            }
+       }
+       _notes.updateTasks(Quests);
+    }
+
+    public void addQuest(Quest quest)
+    {
+        if (!Quests.Contains(quest))
+        {
+            Quests.Add(quest);
+            _notes.updateTasks(Quests);
+        }
+    }
+
+    public void completeQuest(int npcId, int id)
+    {
+        foreach (Quest quest in Quests)
+        {
+            if (quest.npcId == npcId && quest.questId == id)
+            {
+                quest.questState = Quest.state.Completed;
+            }
+        }
+
+        _notes.updateTasks(Quests);
+    }
+
+    public void LoadResourses()
+    {
+        _notes = (Notes) FindObjectOfType(typeof(Notes), true);
+        saveManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SaveManager>();
+        character = GameObject.FindGameObjectWithTag("Character");
+        
+        if (!SaveManager.isLoading) _notes.loadNotes();
+    }
 
 }

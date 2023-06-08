@@ -4,10 +4,14 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public NPCScript npcScript;
     public GameObject dialogueWindow;
     public Text dialogueText;
     public GameObject ui;
     private Queue<string> sentences;
+
+    private NPCDialogues npc;
+    private int id;
 
     public void Start()
     {
@@ -16,6 +20,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(NPCDialogues npc, int id)
     {
+        this.npc = npc;
+        this.id = id;
+
         sentences.Clear();
         ui.SetActive(false);
 
@@ -42,6 +49,11 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (npc.dialogues[id].isQuestDialogue)
+        {
+            npcScript.giveQuest(npc.dialogues[id].questId);
+        }
+
         dialogueWindow.SetActive(false);
         ui.SetActive(true);
     }

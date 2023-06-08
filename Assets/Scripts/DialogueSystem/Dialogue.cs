@@ -2,6 +2,7 @@
 public class Dialogue
 {
     public bool isQuestDialogue;
+    public int questId;
     public bool isMonologue;
     public string[] sentences;
 }
@@ -9,6 +10,5 @@ public class Dialogue
 [System.Serializable]
 public class NPCDialogues
 {
-    public int id;
     public Dialogue[] dialogues;
 }

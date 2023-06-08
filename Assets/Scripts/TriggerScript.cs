@@ -26,14 +26,13 @@ public class TriggerScript : MonoBehaviour
 
             if (_triggerType == type.Dialogue)
             {
+                FindFirstObjectByType<DialogueManager>().npcScript = GetComponent<NPCScript>();
                 ActionButton.dialogueList = GetComponent<DialogueList>();
             }
 
 
             FindObjectOfType<ActionButton>().setTextureButton();
             _anim.SetTrigger("IsTriggered");
-
-
         }
     }
 
@@ -41,6 +40,7 @@ public class TriggerScript : MonoBehaviour
     {
         if (other.CompareTag("Character"))
         {
+            if (FindFirstObjectByType<DialogueManager>() != null) FindFirstObjectByType<DialogueManager>().npcScript = null;
             _anim.SetTrigger("IsTriggered");
         }
     }

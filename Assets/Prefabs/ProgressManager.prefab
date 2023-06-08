@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4798828704336416390
 Transform:
@@ -44,19 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a5128a1eca0bc46b31e540037dc45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Quests:
-  - npcId: 0
-    questId: 0
-    questState: 0
-  gameData:
-    indexScene: -1
-    activeQuest: -1
-    notesFilling: 0
+  Quests: []
+  NPC: []
+  notes: {fileID: 1463032988, guid: ba25f6f87f8b96e42b107821e0717721, type: 3}
   playerData:
     position_x: 0
     position_y: 0
     position_z: 0
     rotation: 0
-    questItems: []
+  gameData:
+    indexScene: -1
+    Quests:
+    - npcId: 0
+      questId: 2
+      name: 
+      questState: 0
   character: {fileID: 4581573915147336824, guid: 4f46c464005fd004186eff82b9c45a30, type: 3}
   saveManager: {fileID: 5102104917460495363, guid: e147e6f3817533847b097d0c63861ef8, type: 3}

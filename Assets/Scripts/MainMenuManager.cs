@@ -10,7 +10,9 @@ public class MainMenuManager : MonoBehaviour
 
     public void Start()
     {
-        _gamedata = SaveSystem.Load<GameData>("game");
+        Application.targetFrameRate = 60; // enable 60 fps
+
+        _gamedata = SaveSystem.Load<GameData>("gamedata");
 
         if (_gamedata.indexScene == -1)
         {

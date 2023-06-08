@@ -6,7 +6,7 @@ public class ExitTrigger : MonoBehaviour
     [SerializeField] private int indexNextScene;
     public Vector3 nextPosition;
     public bool autoChangeScene;
-    public AudioClip changeSceneSound;
+    //public AudioClip changeSceneSound;
 
     public void Awake()
     {
@@ -19,7 +19,7 @@ public class ExitTrigger : MonoBehaviour
         {
             SceneChanger.indexScene = indexNextScene;
             SceneChanger.position = nextPosition;
-            SceneChanger.changeSceneSound = changeSceneSound;
+            //SceneChanger.changeSceneSound = changeSceneSound;
 
             if (autoChangeScene)
             {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5102104917460495363}
   m_Layer: 0
   m_Name: SaveManager
-  m_TagString: Untagged
+  m_TagString: SaveManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e370e82ce5803c43bc285673774a286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressManager: {fileID: 4798828704336416391, guid: b8116eb9f6db5a34188c7efe1ba28824, type: 3}
   playerData:
     position_x: 0
     position_y: 0
     position_z: 0
     rotation: 0
-    questItems: []
+  gameData:
+    indexScene: -1
+    Quests: []
