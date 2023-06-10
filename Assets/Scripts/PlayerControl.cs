@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
         _moveSound = GetComponent<AudioSource>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
     }

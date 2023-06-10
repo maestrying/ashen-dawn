@@ -8,21 +8,6 @@ public class SceneChanger : MonoBehaviour
     public static int indexScene;
     public static Vector3 position;
     //public static AudioClip changeSceneSound;
-
-    private void Awake()
-    {
-        if (GameObject.Find("ProgressManager") == null) return;
-
-        if (indexScene == 1 || SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            Destroy(ProgressManager.Instance.gameObject);
-        }
-        else
-        {
-
-            ProgressManager.Instance.LoadResourses();
-        }
-    }
     private void Start()
     {
         _anim = GetComponent<Animator>();

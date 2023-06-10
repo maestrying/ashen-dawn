@@ -54,6 +54,7 @@ public class DialogueManager : MonoBehaviour
             npcScript.giveQuest(npc.dialogues[id].questId);
         }
 
+
         dialogueWindow.SetActive(false);
         ui.SetActive(true);
     }

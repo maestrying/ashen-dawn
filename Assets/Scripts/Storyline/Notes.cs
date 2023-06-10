@@ -6,6 +6,7 @@ public class Notes : MonoBehaviour
 {
     public List<string> notes;
 
+    [SerializeField] private NoteButton _noteButton;
     [SerializeField] private GameObject _noteSide;
     [SerializeField] private GameObject _questSide;
 
@@ -20,10 +21,23 @@ public class Notes : MonoBehaviour
 
     public static List<string> activeTasks = new List<string>();
 
+    public void setNotesUnread()
+    {
+        ProgressManager.Instance.notesUnread = true;
+        _noteButton.changeSprite();
+    }
+
+    public void setTasksUnread()
+    {
+        ProgressManager.Instance.tasksUnread = true;
+        _noteButton.changeSprite();
+    }
+
     public void addNote(string note)
     {
         notes.Add(note);
     }
+
     public void updateNotesUI()
     {
         if (leftIndex >= 0 && leftIndex < notes.Count)
@@ -76,6 +90,7 @@ public class Notes : MonoBehaviour
                 activeTasks.Add(quest.name);
             }  
         }
+        setTasksUnread();
         updateTasksUI();
         saveNotes();
     }
@@ -97,12 +112,19 @@ public class Notes : MonoBehaviour
 
     public void openNoteSide()
     {
+        NoteButton.activeWindowTasks = false;
+        ProgressManager.Instance.notesUnread = false;
+        _noteButton.changeSprite();
+
         _questSide.SetActive(false);
         _noteSide.SetActive(true);
     }
 
     public void openQuestSide()
     {
+        NoteButton.activeWindowTasks = true;
+        ProgressManager.Instance.tasksUnread = false;
+        _noteButton.changeSprite();
         _noteSide.SetActive(false);
         _questSide.SetActive(true);
     }
@@ -124,8 +146,11 @@ public class Notes : MonoBehaviour
         {
             notes = ProgressManager.Instance.notes;
         }
-        Debug.Log("notes loaded");
+       
         updateNotesUI();
         updateTasksUI();
+        _noteButton.changeSprite();
+
+        Debug.Log("notes loaded");
     }
 }

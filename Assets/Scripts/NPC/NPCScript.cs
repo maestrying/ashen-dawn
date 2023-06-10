@@ -6,7 +6,8 @@ public class NPCScript : MonoBehaviour
     public enum NPC
     {
         Max,
-        Seller
+        Seller,
+        Phone
     }
 
     public NPC npc;
@@ -27,6 +28,10 @@ public class NPCScript : MonoBehaviour
         else if (npc == NPC.Seller)
         {
             return SellerDialogueLogic();
+        }
+        else if (npc == NPC.Phone)
+        {
+            return 0;
         }
 
         return -1;
@@ -65,5 +70,17 @@ public class NPCScript : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    private int PhoneDialogueLogic()
+    {
+        List<Quest> activeQuests = ProgressManager.Instance.Quests;
+
+        if (activeQuests.Count == 0)
+        {
+            return 0;
+        }
+
+        return -1;
     }
 }

@@ -5,6 +5,7 @@ public class TriggerScript : MonoBehaviour
 {
     public enum type
     {
+        Action,
         MusicObject,
         Dialogue,
         Inspect
@@ -12,6 +13,7 @@ public class TriggerScript : MonoBehaviour
 
     private Animator _anim;
     [SerializeField] private type _triggerType;
+    [SerializeField] private int _inspectObjectId;
 
     public void Start()
     {
@@ -28,6 +30,15 @@ public class TriggerScript : MonoBehaviour
             {
                 FindFirstObjectByType<DialogueManager>().npcScript = GetComponent<NPCScript>();
                 ActionButton.dialogueList = GetComponent<DialogueList>();
+
+                if (GetComponent<NPCScript>().npc == NPCScript.NPC.Phone) 
+                { 
+                    ActionButton.isPhone = true;
+                }
+            }
+            else if (_triggerType == type.Inspect)
+            {
+                ActionButton.inspectObjectId = _inspectObjectId;
             }
 
 
@@ -41,6 +52,7 @@ public class TriggerScript : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             if (FindFirstObjectByType<DialogueManager>() != null) FindFirstObjectByType<DialogueManager>().npcScript = null;
+            ActionButton.isPhone = false;
             _anim.SetTrigger("IsTriggered");
         }
     }

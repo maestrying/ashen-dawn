@@ -3,7 +3,6 @@ public class Dialogue
 {
     public bool isQuestDialogue;
     public int questId;
-    public bool isMonologue;
     public string[] sentences;
 }
 

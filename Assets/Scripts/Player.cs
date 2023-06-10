@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
             return;
         }
 
+        Debug.Log(SceneChanger.position);
         if (SceneChanger.position != new Vector3(0, 0, 0)) transform.position = SceneChanger.position;
     }
 
