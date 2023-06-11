@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    private bool _isPaused = false;
+    //private bool _isPaused = false;
     private GameObject _uiButtons;
     private Animator _activeButtonAnimator;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _settings;
     [SerializeField] private GameObject _buttons;
+    [SerializeField] private SaveButton _saveButton;
     [SerializeField] private SceneChanger _sceneChanger;
     [SerializeField] private SettingsManager _settingsManager;
-
-
 
     private void Awake()
     {
@@ -20,21 +19,8 @@ public class PauseMenu : MonoBehaviour
         _activeButtonAnimator.keepAnimatorStateOnDisable = true;
     }
 
-    private void FixedUpdate()
-    {
-        if (_isPaused)
-        {
-            Pause();
-        }
-        else
-        {
-            Resume();
-        }
-    }
-
     public void Pause()
     {
-        _isPaused = true;
         _pauseMenu.SetActive(true);
         _uiButtons.SetActive(false);
         Time.timeScale = 0f;
@@ -43,9 +29,9 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        _isPaused = false;
         _pauseMenu.SetActive(false);
         _uiButtons.SetActive(true);
+        _saveButton.setDefault();
         Time.timeScale = 1f;
         AudioListener.pause = false;
     }
@@ -65,8 +51,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMenu()
     {
+        Destroy(ProgressManager.Instance.gameObject);
         Time.timeScale = 1f;
-        _isPaused = false;
         SceneChanger.indexScene = 1;
         _sceneChanger.Fade();
     }

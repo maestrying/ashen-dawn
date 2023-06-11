@@ -6,7 +6,7 @@ public static class SaveSystem
 {
     public static void Save<T>(string key, T savedata)
     {
-        string path = Application.persistentDataPath + "/" + key + "-save.data";
+        string path = Application.persistentDataPath + "/" + key + ".bin";
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -17,7 +17,7 @@ public static class SaveSystem
 
     public static T Load<T>(string key) where T : new()
     {
-        string path = Application.persistentDataPath + "/" + key + "-save.data";
+        string path = Application.persistentDataPath + "/" + key + ".bin";
 
         if (File.Exists(path))
         {

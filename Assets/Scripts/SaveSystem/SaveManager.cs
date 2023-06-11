@@ -1,65 +1,43 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-    private GameObject _character;
-    private SpriteRenderer _characterSprite;
-    private PlayerData playerData;
     public static bool isLoading;
-
-    public void Awake()
-    {
-        _character = GameObject.FindWithTag("Character");
-        _characterSprite = _character.GetComponentInChildren<SpriteRenderer>();
-    }
-    public void Start()
-    {
-        if (isLoading)
-        {
-            LoadData();
-            isLoading = false;
-        }
-        
-    }
+    public PlayerData playerData;
+    public GameData gameData;
 
     public void SaveData()
     {
-        SaveSystem.Save("character", characterData());
-        SaveSystem.Save("game", gameData());
+        playerData = ProgressManager.Instance.getPlayerData();
+        gameData = ProgressManager.Instance.getGameData();
+        SaveSystem.Save("playerdata", playerData);
+        SaveSystem.Save("gamedata", gameData);
+
+        DebugSave();
     }
 
-    public void LoadData()
+    public PlayerData LoadPlayerData()
     {
-        // characterData
-        playerData = SaveSystem.Load<PlayerData>("character");
-        _character.transform.position = new Vector3(playerData.position_x, playerData.position_y, playerData.position_z);
-        _characterSprite.flipX = playerData.rotation;
+        PlayerData _playerData;
+        _playerData = SaveSystem.Load<PlayerData>("playerdata");
+        return _playerData;
     }
 
-
-
-    // Data
-    private PlayerData characterData()
+    public GameData LoadGameData()
     {
-        var data = new PlayerData()
+        GameData _gameData;
+        _gameData = SaveSystem.Load<GameData>("gamedata");
+        return _gameData;
+    }
+
+    // delete later
+    public void DebugSave()
+    {
+        Debug.Log("Scene: " + gameData.indexScene);
+        Debug.Log("PositionX: " + playerData.position_x);
+        foreach (Quest quest in gameData.Quests)
         {
-            position_x = _character.transform.position.x,
-            position_y = _character.transform.position.y,
-            position_z = _character.transform.position.z,
-            rotation = _character.GetComponentInChildren<SpriteRenderer>().flipX
-        };
-
-        return data;
-    }
-    
-    private GameData gameData()
-    {
-        var data = new GameData()
-        {
-            indexScene = SceneManager.GetActiveScene().buildIndex
-        };
-
-        return data;
+            Debug.Log(quest.name + " | " + quest.questState);
+        }
     }
 }

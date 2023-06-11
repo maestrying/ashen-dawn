@@ -3,23 +3,18 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    private const int _indexStartScene = 15;
+
     [SerializeField] private SceneChanger sceneChanger;
-    [SerializeField] private int _indexScene;
     [SerializeField] private Button _resumeButton;
     private GameData _gamedata;
 
     public void Start()
     {
-        _gamedata = SaveSystem.Load<GameData>("game");
+        Application.targetFrameRate = 45;
 
-        if (_gamedata.indexScene == -1)
-        {
-            _resumeButton.interactable = false;
-        }
-        else 
-        {
-            _resumeButton.interactable = true;
-        }
+        _gamedata = SaveSystem.Load<GameData>("gamedata");
+        _resumeButton.interactable = _gamedata.indexScene == -1 ? false : true;
     }
 
     public void Resume()
@@ -32,7 +27,8 @@ public class MainMenuManager : MonoBehaviour
     public void NewGame()
     {
         SaveSystem.DeleteAllData();
-        SceneChanger.indexScene = _indexScene;
+        SceneChanger.indexScene = _indexStartScene;
+        SceneChanger.position = Vector3.zero;
         sceneChanger.Fade();
     }
 

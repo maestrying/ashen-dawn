@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 947ecbd2d6aee8542b45f4a031cc6536
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _noteSide: {fileID: 7807859814270303945, guid: 7924d476e7b18b44d96ad305a0fc1ac1, type: 3}
+  - _questSide: {fileID: 3364013097119861056, guid: cec5826570d3cd94b8fcdbdd0e95f1e1, type: 3}
+  - leftPageText: {fileID: 8229333150062636781, guid: b821f3b619513d647a220a486fddce7e, type: 3}
+  - rightPageText: {fileID: 8560132574150899231, guid: ad892671940410e45b269ee230c3eb7b, type: 3}
+  - taskPrefab: {fileID: 1284632596679348950, guid: 2e4c5087813d1f14aae45515312f3f53, type: 3}
+  - taskListContainer: {fileID: 8983405671544229420, guid: f2e7d4dc372ea064689bf2141595a60b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

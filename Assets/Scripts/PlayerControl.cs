@@ -13,12 +13,11 @@ public class PlayerControl : MonoBehaviour
 
     private void Start()
     {
-        if (SceneChanger.position != new Vector3(0,0,0)) transform.position = SceneChanger.position;
         _animations = GetComponentInChildren<PlayerAnimations>();
         _moveSound = GetComponent<AudioSource>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Move();
     }
@@ -40,12 +39,14 @@ public class PlayerControl : MonoBehaviour
 
     public void OnLeftButtonDown()
     {
+        if (BoxScript.objectTouched) return;
         _input = new Vector2(-1, 0);
         _moveSound.Play();
     }
 
     public void OnRightButtonDown()
     {
+        if (BoxScript.objectTouched) return;
         _input = new Vector2(1, 0);
         _moveSound.Play();
     }

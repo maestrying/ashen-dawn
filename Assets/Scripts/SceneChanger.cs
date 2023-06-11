@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
 
     public static int indexScene;
     public static Vector3 position;
-
+    //public static AudioClip changeSceneSound;
     private void Start()
     {
         _anim = GetComponent<Animator>();
@@ -15,7 +15,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Fade()
     {
-        Debug.Log("position" + position);
+        //PlayChangeSound();
         _anim.SetTrigger("fade");
     }
 
@@ -23,4 +23,13 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(indexScene);
     }
+
+/*    public void PlayChangeSound()
+    {
+        if (changeSceneSound != null)
+        {
+            GetComponent<AudioSource>().clip = changeSceneSound;
+            GetComponent<AudioSource>().Play();
+        }
+    }*/
 }

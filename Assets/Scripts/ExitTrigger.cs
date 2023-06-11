@@ -6,11 +6,11 @@ public class ExitTrigger : MonoBehaviour
     [SerializeField] private int indexNextScene;
     public Vector3 nextPosition;
     public bool autoChangeScene;
+    //public AudioClip changeSceneSound;
 
     public void Awake()
     {
        _anim = GameObject.FindGameObjectWithTag("ExitButton").GetComponent<Animator>();
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,6 +19,7 @@ public class ExitTrigger : MonoBehaviour
         {
             SceneChanger.indexScene = indexNextScene;
             SceneChanger.position = nextPosition;
+            //SceneChanger.changeSceneSound = changeSceneSound;
 
             if (autoChangeScene)
             {

@@ -13,6 +13,9 @@ TagManager:
   - ExitButton
   - InspectWindow
   - UI
+  - SaveManager
+  - DestroyableObject
+  - Notes
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Objects
   - 
   - 
   - 

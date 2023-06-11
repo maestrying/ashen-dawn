@@ -1,34 +1,37 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public NPCScript npcScript;
     public GameObject dialogueWindow;
     public Text dialogueText;
+    public GameObject ui;
     private Queue<string> sentences;
+
+    private NPCDialogues npc;
+    private int id;
 
     public void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue, int id)
+    public void StartDialogue(NPCDialogues npc, int id)
     {
+        this.npc = npc;
+        this.id = id;
+
         sentences.Clear();
+        ui.SetActive(false);
 
-        foreach (Sentences sentence in dialogue.sentences)
+        Dialogue dialogue = npc.dialogues[id];
+        foreach (string sentence in dialogue.sentences)
         {
-            if (sentence.id == id)
-            {
-                foreach(string sentence2 in sentence.sentences)
-                {
-                    sentences.Enqueue(sentence2);
-                }
-            }
+            sentences.Enqueue(sentence);
         }
-
+ 
         NextSentence();
     }
 
@@ -46,6 +49,13 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (npc.dialogues[id].isQuestDialogue)
+        {
+            npcScript.giveQuest(npc.dialogues[id].questId);
+        }
+
+
         dialogueWindow.SetActive(false);
+        ui.SetActive(true);
     }
 }
