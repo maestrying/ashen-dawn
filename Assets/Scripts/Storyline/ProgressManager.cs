@@ -26,9 +26,6 @@ public class ProgressManager : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 200;
-        //QualitySettings.vSyncCount = 0;
-
         Debug.Log(Application.targetFrameRate);
         Debug.Log(QualitySettings.vSyncCount);
 
