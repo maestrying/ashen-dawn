@@ -39,12 +39,14 @@ public class PlayerControl : MonoBehaviour
 
     public void OnLeftButtonDown()
     {
+        if (BoxScript.objectTouched) return;
         _input = new Vector2(-1, 0);
         _moveSound.Play();
     }
 
     public void OnRightButtonDown()
     {
+        if (BoxScript.objectTouched) return;
         _input = new Vector2(1, 0);
         _moveSound.Play();
     }

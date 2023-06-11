@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    private const int _indexStartScene = 2;
+    private const int _indexStartScene = 15;
 
     [SerializeField] private SceneChanger sceneChanger;
     [SerializeField] private Button _resumeButton;

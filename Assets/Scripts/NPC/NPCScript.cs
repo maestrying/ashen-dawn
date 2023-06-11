@@ -46,12 +46,13 @@ public class NPCScript : MonoBehaviour
         {
             return 0;
         }
-        else if (activeQuests[0].questState == Quest.state.InProgress && (activeQuests.Count < 2 || activeQuests[1] == null || activeQuests[1].questState == Quest.state.InProgress))
+        else if (activeQuests[0].questState == Quest.state.InProgress && (activeQuests.Count < 2 || activeQuests[1].questState != Quest.state.Completed))
         { 
             return 1;
         }
-        else if (activeQuests[0].questState == Quest.state.InProgress && activeQuests[1].questState == Quest.state.Completed)
+        else if (activeQuests[0].questState == Quest.state.BackToComplete)
         {
+            ProgressManager.Instance.setStateQuest(0, 0, Quest.state.Completed);
             return 2;
         }
 
@@ -62,14 +63,21 @@ public class NPCScript : MonoBehaviour
     {
         List<Quest> activeQuests = ProgressManager.Instance.Quests;
 
-        if (activeQuests.Count > 0 && activeQuests[0].questState == Quest.state.InProgress)
+        if (activeQuests.Count == 1 && activeQuests[0].questState == Quest.state.InProgress)
         {
             return 1;
         }
-        else
+        else if (activeQuests.Count == 2 && activeQuests[1].questState == Quest.state.InProgress)
         {
-            return 0;
+            return 2;
         }
+        else if (activeQuests.Count > 2 && activeQuests[1].questState == Quest.state.BackToComplete)
+        {
+            ProgressManager.Instance.setStateQuest(1, 0, Quest.state.Completed);
+            ProgressManager.Instance.setStateQuest(0, 0, Quest.state.BackToComplete);
+            return 3; 
+        }
+        return 0;
     }
 
     private int PhoneDialogueLogic()

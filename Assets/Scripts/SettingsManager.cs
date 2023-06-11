@@ -10,9 +10,12 @@ public class SettingsManager : MonoBehaviour
 
     public Slider musicSlider;
     public Slider soundSlider;
+    public Toggle fpsToggle;
+    public GameObject fpsCounter;
 
     private float musicVolume;
     private float soundVolume;
+    private bool showFps;
 
     public void Start()
     {
@@ -32,6 +35,12 @@ public class SettingsManager : MonoBehaviour
         }
 
         UpdateVolumes();
+
+        if (PlayerPrefs.HasKey("fps"))
+        {
+            fpsToggle.isOn = PlayerPrefs.GetInt("fps") == 1 ? true : false;
+            fpsCounterState();
+        }
     }
     public void MusicVolumeChange(float volume)
     {
@@ -43,6 +52,10 @@ public class SettingsManager : MonoBehaviour
         soundVolume = volume;
     }
 
+    public void fpsCounterState()
+    {
+        fpsCounter.SetActive(fpsToggle.isOn);
+    }
     public void UpdateVolumes()
     {
         foreach (AudioSource source in soundSources)
@@ -63,12 +76,15 @@ public class SettingsManager : MonoBehaviour
     {
         musicVolume = 0.5f;
         soundVolume = 0.5f;
+        showFps = false;
         UpdateVolumes();
     }
 
     public void SaveSettings()
     {
+        fpsCounterState();
         UpdateVolumes();
+        PlayerPrefs.SetInt("fps", showFps ? 1 : 0);
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("soundVolume", soundVolume);
         PlayerPrefs.Save();

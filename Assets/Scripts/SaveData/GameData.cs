@@ -7,6 +7,7 @@ public class GameData
     public List<Quest> Quests;
     public List<string> notes;
     public List<string> activeTasks;
+    public List<string> completedTasks;
     public bool notesUnread;
     public bool tasksUnread;
     public bool unread;

@@ -16,6 +16,7 @@ public class ProgressManager : MonoBehaviour
     // NOTES VARIABLES
     public List<string> notes;
     public List<string> activeTasks;
+    public List<string> completedTasks;
     public bool notesUnread = false;
     public bool tasksUnread = false;
     public bool unread = false;
@@ -25,6 +26,12 @@ public class ProgressManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 200;
+        //QualitySettings.vSyncCount = 0;
+
+        Debug.Log(Application.targetFrameRate);
+        Debug.Log(QualitySettings.vSyncCount);
+
         if (!Instance)
         {
             Instance = this;
@@ -46,6 +53,7 @@ public class ProgressManager : MonoBehaviour
             notes = gameData.notes;
             unread = gameData.unread;
             activeTasks = gameData.activeTasks;
+            completedTasks = gameData.completedTasks;
             notesUnread = gameData.notesUnread;
             tasksUnread = gameData.tasksUnread;
             Debug.Log(_notes);
@@ -67,6 +75,7 @@ public class ProgressManager : MonoBehaviour
         gameData.indexScene = SceneManager.GetActiveScene().buildIndex;
         gameData.Quests = Quests;
         gameData.activeTasks = activeTasks;
+        gameData.completedTasks = completedTasks;
         gameData.notes = notes;
         gameData.notesUnread = notesUnread;
         gameData.tasksUnread = tasksUnread;
@@ -96,10 +105,7 @@ public class ProgressManager : MonoBehaviour
 
         foreach (Quest quest in Quests)
         {
-            if (quest.questState == Quest.state.InProgress)
-            {
-                activeQuests.Add(quest);
-            }
+            if (quest.questState == Quest.state.InProgress) activeQuests.Add(quest);
         }
 
         return activeQuests;
@@ -109,10 +115,7 @@ public class ProgressManager : MonoBehaviour
     {
        foreach (Quest quest in Quests)
        {
-            if (quest.npcId == npcId && quest.questId == id)
-            {
-                quest.questState = Quest.state.InProgress;
-            }
+            if (quest.npcId == npcId && quest.questId == id) quest.questState = Quest.state.InProgress;
        }
        _notes.updateTasks(Quests);
     }
@@ -126,14 +129,20 @@ public class ProgressManager : MonoBehaviour
         }
     }
 
+    public void setStateQuest(int npcId, int id, Quest.state state)
+    {
+        foreach (Quest quest in Quests)
+        {
+            if (quest.npcId == npcId && quest.questId == id) quest.questState = state;
+        }
+
+        _notes.updateTasks(Quests);
+    }
     public void completeQuest(int npcId, int id)
     {
         foreach (Quest quest in Quests)
         {
-            if (quest.npcId == npcId && quest.questId == id)
-            {
-                quest.questState = Quest.state.Completed;
-            }
+            if (quest.npcId == npcId && quest.questId == id) quest.questState = Quest.state.Completed;
         }
 
         _notes.updateTasks(Quests);

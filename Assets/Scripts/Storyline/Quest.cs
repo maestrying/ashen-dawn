@@ -4,6 +4,7 @@ public class Quest
     public enum state
     {
         InProgress,
+        BackToComplete,
         Completed
     }
 

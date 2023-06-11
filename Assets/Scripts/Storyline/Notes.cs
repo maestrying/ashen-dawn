@@ -17,9 +17,11 @@ public class Notes : MonoBehaviour
     private const int notesOffset = 2;
 
     [SerializeField] private Text taskPrefab;
-    [SerializeField] private Transform taskListContainer;
+    [SerializeField] private Transform activeTaskListContainer;
+    [SerializeField] private Transform completedTaskListContainer;
 
     public static List<string> activeTasks = new List<string>();
+    public static List<string> completedTasks = new List<string>();
 
     public void setNotesUnread()
     {
@@ -88,8 +90,15 @@ public class Notes : MonoBehaviour
             if (quest.questState == Quest.state.InProgress && !activeTasks.Contains(quest.name)) 
             {
                 activeTasks.Add(quest.name);
-            }  
+            }
+
+            else if ((quest.questState == Quest.state.Completed || quest.questState == Quest.state.BackToComplete) && !completedTasks.Contains(quest.name))
+            {
+                if (activeTasks.Contains(quest.name)) activeTasks.Remove(quest.name);
+                completedTasks.Add(quest.name);
+            }
         }
+
         setTasksUnread();
         updateTasksUI();
         saveNotes();
@@ -97,15 +106,25 @@ public class Notes : MonoBehaviour
 
     private void updateTasksUI()
     {
-        foreach (Transform task in taskListContainer)
+        foreach (Transform task in activeTaskListContainer)
         {
             Destroy(task.gameObject);
         }
 
         foreach (string task in activeTasks)
         {
-            
-            Text taskText = Instantiate(taskPrefab, taskListContainer);
+            Text taskText = Instantiate(taskPrefab, activeTaskListContainer);
+            taskText.text = task;
+        }
+
+        foreach (Transform task in completedTaskListContainer)
+        {
+            Destroy(task.gameObject);
+        }
+
+        foreach (string task in completedTasks)
+        {
+            Text taskText = Instantiate(taskPrefab, completedTaskListContainer);
             taskText.text = task;
         }
     }
@@ -133,6 +152,7 @@ public class Notes : MonoBehaviour
     {
         ProgressManager.Instance.notes = notes;
         ProgressManager.Instance.activeTasks = activeTasks;
+        ProgressManager.Instance.completedTasks = completedTasks;
     }
 
     public void loadNotes()
@@ -140,6 +160,11 @@ public class Notes : MonoBehaviour
         if (ProgressManager.Instance.activeTasks != null)
         {
             activeTasks = ProgressManager.Instance.activeTasks;
+        }
+
+        if (ProgressManager.Instance.completedTasks != null)
+        {
+            completedTasks = ProgressManager.Instance.completedTasks;
         }
 
         if (ProgressManager.Instance.notes != null)
