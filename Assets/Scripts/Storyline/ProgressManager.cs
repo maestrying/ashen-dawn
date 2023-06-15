@@ -6,12 +6,22 @@ public class ProgressManager : MonoBehaviour
 {
     public static ProgressManager Instance { get; private set; }
 
+    // PROGRESS MANAGER RESOURSES
     public List<Quest> Quests;
     public PlayerData playerData;
     public GameData gameData;
     [SerializeField] private Notes _notes;
     [SerializeField] private GameObject character;
     [SerializeField] private SaveManager saveManager;
+
+    // LIGHTING STATE
+    public enum LightState
+    {
+        Day,
+        Evening,
+        Night
+    }
+    public new LightState light;
 
     // NOTES VARIABLES
     public List<string> notes;
@@ -21,14 +31,14 @@ public class ProgressManager : MonoBehaviour
     public bool tasksUnread = false;
     public bool unread = false;
 
+    public bool flashlight = false;
+    public bool spatula = false;
+
     // PHONE STATUS
     public bool isCalling = false;
 
     private void Awake()
     {
-        Debug.Log(Application.targetFrameRate);
-        Debug.Log(QualitySettings.vSyncCount);
-
         if (!Instance)
         {
             Instance = this;
@@ -47,6 +57,7 @@ public class ProgressManager : MonoBehaviour
         {
             gameData = saveManager.LoadGameData();
             Quests = gameData.Quests;
+            light = gameData.lightState;
             notes = gameData.notes;
             unread = gameData.unread;
             activeTasks = gameData.activeTasks;
@@ -71,6 +82,7 @@ public class ProgressManager : MonoBehaviour
     {
         gameData.indexScene = SceneManager.GetActiveScene().buildIndex;
         gameData.Quests = Quests;
+        gameData.lightState = light;
         gameData.activeTasks = activeTasks;
         gameData.completedTasks = completedTasks;
         gameData.notes = notes;

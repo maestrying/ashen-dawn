@@ -6,13 +6,6 @@ public class BoxScript : MonoBehaviour
     public Quest[] quests;
     public static bool objectTouched;
 
-    public void Start()
-    {
-        if (ProgressManager.Instance.Quests.Count < 2 || !(ProgressManager.Instance.Quests[1].questState == Quest.state.InProgress))
-        {
-            Destroy(gameObject);
-        }
-    }
     private void OnMouseDown()
     {
         objectTouched = true;

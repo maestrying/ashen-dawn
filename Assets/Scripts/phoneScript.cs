@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class phoneScript : MonoBehaviour
@@ -8,11 +6,7 @@ public class phoneScript : MonoBehaviour
     public void Start()
     {
         circleCollider = GetComponent<CircleCollider2D>();
-    }
 
-    public void changePhoneState()
-    {
-        circleCollider.enabled = !circleCollider.enabled;
+        circleCollider.enabled = (ProgressManager.Instance.Quests.Count == 5 && ProgressManager.Instance.Quests[4].questState == Quest.state.InProgress) ? true : false;
     }
-
 }

@@ -56,4 +56,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/roof.unity
     guid: e2671787a26648f4e94471281fb8a305
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/dream.unity
+    guid: 7b6c76db74382b4438b48328c34cd73f
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/Beginning.unity
+    guid: c48b5775214859f49aebd781332a8ccb
   m_configObjects: {}

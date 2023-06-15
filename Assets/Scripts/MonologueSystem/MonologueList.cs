@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class MonologueList : MonoBehaviour
 {
-    public Monologue monologue;
+    public Monologue[] monologues;
     public MonologueManager manager;
-    public void StartMonologue()
+
+    public void Start()
     {
-        manager.StartMonologue(monologue);
+        manager = FindFirstObjectByType<MonologueManager>();
+    }
+    public void StartMonologue(int id, bool hideUI)
+    {
+        Debug.Log(monologues[id].sentences.Count);
+        manager.StartMonologue(monologues[id], hideUI);
     }
 }

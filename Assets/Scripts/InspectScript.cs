@@ -9,15 +9,6 @@ public class InspectScript : MonoBehaviour
     [SerializeField] private GameObject[] _inspectObjects;
     private int currentId;
 
-    public bool startMonologue;
-
-    public void Start()
-    {
-        if (startMonologue)
-        {
-            GetComponent<MonologueList>().StartMonologue();
-        }
-    }
     public void showObject(int id)
     {
         currentId = id;

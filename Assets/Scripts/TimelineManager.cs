@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -7,6 +8,7 @@ public class TimelineManager : MonoBehaviour
     public Vector3 nextPosition;
     public SceneChanger sceneChanger;
     private PlayableDirector _director;
+    public Quest[] quests;
 
     void Start()
     {
@@ -19,6 +21,14 @@ public class TimelineManager : MonoBehaviour
     {
         if (_director.state == PlayState.Paused)
         {
+            if (quests.Count() > 0) { 
+                foreach (Quest quest in quests)
+                {
+                    ProgressManager.Instance.addQuest(quest);
+                }
+
+                ProgressManager.Instance.light = ProgressManager.LightState.Day;
+            }
             sceneChanger.Fade();
         }
     }

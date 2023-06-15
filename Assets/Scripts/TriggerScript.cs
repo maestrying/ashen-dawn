@@ -15,7 +15,7 @@ public class TriggerScript : MonoBehaviour
     [SerializeField] private type _triggerType;
     [SerializeField] private int _inspectObjectId;
 
-    public void Start()
+    public void Awake()
     {
         _anim = GameObject.FindGameObjectWithTag("ActionButton").GetComponent<Animator>();
     }
@@ -28,13 +28,14 @@ public class TriggerScript : MonoBehaviour
 
             if (_triggerType == type.Dialogue)
             {
-                FindFirstObjectByType<DialogueManager>().npcScript = GetComponent<NPCScript>();
-                ActionButton.dialogueList = GetComponent<DialogueList>();
+                NPCScript npcScript = GetComponent<NPCScript>();
+                DialogueList dialogueList = GetComponent<DialogueList>();
+                DialogueManager manager = FindFirstObjectByType<DialogueManager>();
 
-                if (GetComponent<NPCScript>().npc == NPCScript.NPC.Phone) 
-                { 
-                    ActionButton.isPhone = true;
-                }
+                manager.npcScript = npcScript;
+                ActionButton.dialogueList = dialogueList;
+
+                
             }
             else if (_triggerType == type.Inspect)
             {
@@ -43,6 +44,7 @@ public class TriggerScript : MonoBehaviour
 
 
             FindObjectOfType<ActionButton>().setTextureButton();
+            
             _anim.SetTrigger("IsTriggered");
         }
     }

@@ -25,7 +25,7 @@ public class Bird : MonoBehaviour
         // Вычисляем случайное направление вектора для разлета голубя
         Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1f), 0f).normalized;
 
-        while (transform.position.y < 10f) // Меняйте значение 10f на необходимую высоту, на которой голуби должны разлетаться
+        while (transform.position.y < 2f) // Меняйте значение 10f на необходимую высоту, на которой голуби должны разлетаться
         {
             // Изменяем позицию голубя на основе случайного направления, силы и скорости
             transform.position += randomDirection * flyForce * flySpeed * Time.deltaTime;
@@ -33,6 +33,6 @@ public class Bird : MonoBehaviour
             yield return null;
         }
 
-        isFlying = false; // Голубь перестал лететь
+        Destroy(gameObject);
     }
 }
