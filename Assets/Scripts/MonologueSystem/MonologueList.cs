@@ -5,7 +5,7 @@ public class MonologueList : MonoBehaviour
     public Monologue[] monologues;
     public MonologueManager manager;
 
-    public void Start()
+    public void Awake()
     {
         manager = FindFirstObjectByType<MonologueManager>();
     }

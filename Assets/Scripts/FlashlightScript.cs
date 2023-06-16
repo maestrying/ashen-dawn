@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FlashlightScript : MonoBehaviour
 {
-   
     void Start()
     {
         if (ProgressManager.Instance.flashlight)
@@ -14,9 +13,10 @@ public class FlashlightScript : MonoBehaviour
 
     public void takeFlashlight()
     {
+        Debug.Log("flashlight");
         List<Quest> quests = ProgressManager.Instance.Quests;
 
-        if (quests.Count == 4 && quests[3].questState == Quest.state.InProgress)
+        if (quests.Count == 4 && quests[2].questState == Quest.state.InProgress)
         {
             ProgressManager.Instance.flashlight = true;
             ProgressManager.Instance.setStateQuest(-1, 0, Quest.state.Completed);

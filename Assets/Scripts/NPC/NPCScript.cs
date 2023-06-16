@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class NPCScript : MonoBehaviour
         Seller,
         Wife,
         Bartolomey,
+        Artyom,
+        Andrey,
         Phone
     }
 
@@ -42,6 +45,14 @@ public class NPCScript : MonoBehaviour
         else if (npc == NPC.Bartolomey)
         {
             return BartolomeyDialogueLogic();
+        }
+        else if (npc == NPC.Artyom)
+        {
+            return ArtyomDialogueLogic();
+        }
+        else if (npc == NPC.Andrey)
+        {
+            return AndreyDialogueLogic();
         }
         else if (npc == NPC.Phone)
         {
@@ -95,6 +106,11 @@ public class NPCScript : MonoBehaviour
             ProgressManager.Instance.setStateQuest(0, 0, Quest.state.BackToComplete);
             return 3; 
         }
+        else if (activeQuests.Count == 6 && activeQuests[5].questState == Quest.state.InProgress)
+        {
+            ProgressManager.Instance.setStateQuest(-1, 3, Quest.state.Completed);
+            return 4;
+        }
         return 0;
     }
 
@@ -126,19 +142,75 @@ public class NPCScript : MonoBehaviour
         }
     }
 
+    private int ArtyomDialogueLogic()
+    {
+        List<Quest> activeQuests = ProgressManager.Instance.Quests;
+
+        if (activeQuests.Count == 7 && activeQuests[5].questState == Quest.state.Completed)
+        {
+            return 0;
+        }
+
+        if (activeQuests.Count == 8 && activeQuests[7].questState == Quest.state.InProgress && !ProgressManager.Instance.spatula)
+        {
+            return 2;
+        }
+
+        if (activeQuests.Count == 8 && activeQuests[7].questState == Quest.state.InProgress && ProgressManager.Instance.spatula)
+        {
+            ProgressManager.Instance.setStateQuest(3, 0, Quest.state.Completed);
+            ProgressManager.Instance.light = ProgressManager.LightState.Evening;
+            ProgressManager.Instance.prefabLoader.LoadPrefabById(3);
+            return 1;
+        }
+
+        if (activeQuests.Count == 8 && activeQuests[7].questState == Quest.state.Completed && SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            return 3;
+        }
+
+        if (activeQuests.Count == 8 && activeQuests[7].questState == Quest.state.Completed && SceneManager.GetActiveScene().buildIndex == 20)
+        {
+            return 4;
+        }
+
+        if (activeQuests.Count == 9 && activeQuests[8].questState == Quest.state.InProgress)
+        {
+            return 5;
+        }
+
+        if (activeQuests.Count == 9 && activeQuests[8].questState == Quest.state.Completed)
+        {
+            ProgressManager.Instance.light = ProgressManager.LightState.Night;
+            return 6;
+        }
+
+        return -1;
+    }
+
+    private int AndreyDialogueLogic()
+    {
+        List<Quest> activeQuests = ProgressManager.Instance.Quests;
+
+        if (activeQuests.Count == 8 && activeQuests[6].questState == Quest.state.InProgress)
+        {
+            ProgressManager.Instance.setStateQuest(-1, 4, Quest.state.Completed);
+            return 0;
+        }
+
+        return -1;
+    }
+
     private int PhoneDialogueLogic()
     {
         List<Quest> activeQuests = ProgressManager.Instance.Quests;
 
-        if (activeQuests.Count == 0)
-        {
-            return 0;
-        }
-        else if (activeQuests.Count == 5 && activeQuests[4].questState == Quest.state.InProgress)
+        if (activeQuests.Count == 5 && activeQuests[4].questState == Quest.state.InProgress)
         {
             ProgressManager.Instance.setStateQuest(-1, 2, Quest.state.Completed);
-            return 1;
+            return 0;
         }
+
 
         return -1;
     }

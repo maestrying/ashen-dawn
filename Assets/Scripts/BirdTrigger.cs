@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BirdTrigger : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class BirdTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Character")) // Проверяем, если объект, соприкасающийся с триггером, имеет тег "Character"
         {
+            if (SceneManager.GetActiveScene().buildIndex == 16) 
+            {
+                ProgressManager.Instance.setStateQuest(3, 1, Quest.state.Completed);
+            }
+
             foreach (GameObject bird in birds)
             {
                 Bird birdScript = bird.GetComponent<Bird>(); // Получаем компонент Bird из объекта голубя

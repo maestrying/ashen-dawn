@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class SpatulaScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        if (ProgressManager.Instance.spatula)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void takeSpatula()
     {
-        
+        List<Quest> quests = ProgressManager.Instance.Quests;
+
+        if (quests.Count == 8 && quests[7].questState == Quest.state.InProgress)
+        {
+            ProgressManager.Instance.spatula = true;
+            ProgressManager.Instance.light = ProgressManager.LightState.Evening;
+
+            Destroy(gameObject);
+        }
     }
 }

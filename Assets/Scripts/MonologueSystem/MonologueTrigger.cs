@@ -6,7 +6,7 @@ public class MonologueTrigger : MonoBehaviour
     public int id;
     public bool hideUI;
 
-    private void Start()
+    private void Awake()
     {
         monologue = GetComponent<MonologueList>();
     }

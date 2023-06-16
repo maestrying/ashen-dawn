@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -29,6 +30,17 @@ public class TimelineManager : MonoBehaviour
 
                 ProgressManager.Instance.light = ProgressManager.LightState.Day;
             }
+
+            // костыль
+            if (ProgressManager.Instance != null)
+            {
+                List<Quest> activeQuests = ProgressManager.Instance.Quests;
+                if (activeQuests.Count == 8 && activeQuests[6].questState == Quest.state.InProgress)
+                {
+                    ProgressManager.Instance.setStateQuest(-1, 4, Quest.state.Completed);
+                }
+            }
+
             sceneChanger.Fade();
         }
     }

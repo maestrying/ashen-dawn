@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BedScript : MonoBehaviour
@@ -18,8 +19,19 @@ public class BedScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        List<Quest> activeQuests = ProgressManager.Instance.Quests;
+
         objectTouched = true;
-        SceneChanger.indexScene = 17;
+
+        if (activeQuests.Count == 4)
+        {
+            SceneChanger.indexScene = 17;
+        }
+        else if (activeQuests.Count == 9)
+        {
+            SceneChanger.indexScene = 23;
+        }
+        
         _changer.Fade();
     }
     private void OnMouseUp()

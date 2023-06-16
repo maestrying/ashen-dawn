@@ -13,6 +13,7 @@ public class ProgressManager : MonoBehaviour
     [SerializeField] private Notes _notes;
     [SerializeField] private GameObject character;
     [SerializeField] private SaveManager saveManager;
+    public PrefabLoader prefabLoader;
 
     // LIGHTING STATE
     public enum LightState
@@ -64,8 +65,14 @@ public class ProgressManager : MonoBehaviour
             completedTasks = gameData.completedTasks;
             notesUnread = gameData.notesUnread;
             tasksUnread = gameData.tasksUnread;
+            flashlight = gameData.flashlight;
+            spatula = gameData.spatula;
+
             Debug.Log(_notes);
             _notes.loadNotes();
+
+            prefabLoader = FindFirstObjectByType<PrefabLoader>();
+            prefabLoader.LoadPrefabs();
 
             SaveManager.isLoading = false;
         }
@@ -75,6 +82,7 @@ public class ProgressManager : MonoBehaviour
 
             updatePlayerData();
             updateGameData();
+            _notes.updateTasks(Quests);
         }
     }
 
@@ -89,6 +97,8 @@ public class ProgressManager : MonoBehaviour
         gameData.notesUnread = notesUnread;
         gameData.tasksUnread = tasksUnread;
         gameData.unread = unread;
+        gameData.flashlight = flashlight;
+        gameData.spatula = spatula;
 
     }
     public void updatePlayerData()

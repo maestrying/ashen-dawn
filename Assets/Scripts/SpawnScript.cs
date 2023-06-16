@@ -13,6 +13,8 @@ public class SpawnScript : MonoBehaviour
 
     private void Start()
     {
+        if (ProgressManager.Instance.light == ProgressManager.LightState.Night) return;
+
         Invoke("SpawnLeftObj", Random.Range(minDelay, maxDelay));
         Invoke("SpawnRightObj", Random.Range(minDelay, maxDelay));
     }
