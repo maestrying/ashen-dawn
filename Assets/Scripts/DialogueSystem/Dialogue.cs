@@ -2,6 +2,7 @@
 public class Dialogue
 {
     public bool isQuestDialogue;
+    public bool isOneTimeDialogue;
     public int questId;
     public string[] sentences;
 }

@@ -9,14 +9,19 @@ public class MonologueManager : MonoBehaviour
     public GameObject ui;
     private Queue<string> sentences;
 
+    private bool hideUI;
+
     public void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartMonologue(Monologue monologue)
+    public void StartMonologue(Monologue monologue, bool hideUI)
     {
+        this.hideUI = hideUI;
+
         sentences.Clear();
+        if (hideUI) ui.SetActive(false);
         monologueWindow.SetActive(true);
         
         foreach (string sentence in monologue.sentences) 
@@ -37,12 +42,13 @@ public class MonologueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         monologueText.text = sentence;
 
-        Invoke("NextSentence", sentence.Length / 4);
+        Invoke("NextSentence", 3);
         Debug.Log(sentence);
     }
 
     public void EndMonologue()
     {
+        if (hideUI) ui.SetActive(true);
         monologueWindow.SetActive(false);
     }
 }

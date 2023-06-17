@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private bool _pcMode; // delete later
+    private GameObject _ui;
     private Vector3 _input;
     private bool _IsMoving;
     
@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     {
         _animations = GetComponentInChildren<PlayerAnimations>();
         _moveSound = GetComponent<AudioSource>();
+        _ui = GameObject.FindGameObjectWithTag("UI");
     }
 
     private void Update()
@@ -24,7 +25,12 @@ public class PlayerControl : MonoBehaviour
 
     private void Move()
     {
-        if (_pcMode) _input = new Vector2(Input.GetAxis("Horizontal"), 0); // delete later
+        if (!_ui.activeInHierarchy)
+        {
+            _animations.IsMoving = false;
+            OnButtonUp();
+            return;
+        }
 
         transform.position += _input * _speed * Time.deltaTime;
 
@@ -39,14 +45,14 @@ public class PlayerControl : MonoBehaviour
 
     public void OnLeftButtonDown()
     {
-        if (BoxScript.objectTouched) return;
+        if (BoxScript.objectTouched || BedScript.objectTouched) return;
         _input = new Vector2(-1, 0);
         _moveSound.Play();
     }
 
     public void OnRightButtonDown()
     {
-        if (BoxScript.objectTouched) return;
+        if (BoxScript.objectTouched || BedScript.objectTouched) return;
         _input = new Vector2(1, 0);
         _moveSound.Play();
     }

@@ -53,4 +53,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/cutScenes/firstCutScene.unity
     guid: 66fde914be646c8428a33a22bbc8f307
+  - enabled: 1
+    path: Assets/Scenes/roof.unity
+    guid: e2671787a26648f4e94471281fb8a305
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/dream.unity
+    guid: 7b6c76db74382b4438b48328c34cd73f
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/Beginning.unity
+    guid: c48b5775214859f49aebd781332a8ccb
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/andreyCutScene.unity
+    guid: 50723bd1d737d964a8c9036d9e3f1c72
+  - enabled: 1
+    path: Assets/Scenes/artyom-flat.unity
+    guid: 3a07ae4420ed2e140b48c3361a31fe7e
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/psyCutScene.unity
+    guid: 689f26932cad3a1429d05ea184eb5db5
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/toStreet1.unity
+    guid: 3726ef59474ae7246888bc75b6a9291b
+  - enabled: 1
+    path: Assets/Scenes/cutScenes/dreamWithWife.unity
+    guid: 93c2f38d75b393940ab9dba4de47392f
+  - enabled: 1
+    path: Assets/Scenes/end.unity
+    guid: 3d5a13e7d3f90154794aa503bcee881b
   m_configObjects: {}

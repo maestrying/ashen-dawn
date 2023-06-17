@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Elevator : MonoBehaviour
@@ -25,6 +26,8 @@ public class Elevator : MonoBehaviour
                 SceneChanger.indexScene = 8;
                 break;
         }
+
+        if (SceneManager.GetActiveScene().buildIndex == SceneChanger.indexScene) return;
 
         SceneChanger.position = _elevatorPosition;
         _sceneChanger.Fade();

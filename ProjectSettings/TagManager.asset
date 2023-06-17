@@ -16,6 +16,7 @@ TagManager:
   - SaveManager
   - DestroyableObject
   - Notes
+  - MonologueManager
   layers:
   - Default
   - TransparentFX

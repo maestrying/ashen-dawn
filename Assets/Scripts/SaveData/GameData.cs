@@ -4,6 +4,9 @@ using System.Collections.Generic;
 public class GameData
 {
     public int indexScene;
+    public ProgressManager.LightState lightState;
+    public bool flashlight;
+    public bool spatula;
     public List<Quest> Quests;
     public List<string> notes;
     public List<string> activeTasks;

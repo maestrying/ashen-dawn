@@ -51,6 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMenu()
     {
+        AudioListener.pause = false;
         Destroy(ProgressManager.Instance.gameObject);
         Time.timeScale = 1f;
         SceneChanger.indexScene = 1;

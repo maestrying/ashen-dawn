@@ -54,6 +54,11 @@ public class DialogueManager : MonoBehaviour
             npcScript.giveQuest(npc.dialogues[id].questId);
         }
 
+        if (npc.dialogues[id].isOneTimeDialogue)
+        {
+            npcScript.GetComponent<CircleCollider2D>().enabled = false;
+        }
+
 
         dialogueWindow.SetActive(false);
         ui.SetActive(true);

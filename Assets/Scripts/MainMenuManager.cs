@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Start()
     {
-        Application.targetFrameRate = 45;
+        Application.targetFrameRate = 60;
 
         _gamedata = SaveSystem.Load<GameData>("gamedata");
         _resumeButton.interactable = _gamedata.indexScene == -1 ? false : true;

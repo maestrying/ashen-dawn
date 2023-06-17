@@ -54,7 +54,6 @@ MonoBehaviour:
     position_y: 0
     position_z: 0
     rotation: 0
-    questItems: []
 --- !u!114 &4581573915147336822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1.8
-  _pcMode: 0
   _characterSprite: {fileID: 4581573915407037025}
 --- !u!82 &4581573915086933667
 AudioSource:
@@ -179,7 +177,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.26894915, y: -0.5030674}
+  m_Offset: {x: 0.2474153, y: -0.43655658}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -190,7 +188,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.40487838, y: 1.7314632}
+  m_Size: {x: 0.4279971, y: 1.9245768}
   m_EdgeRadius: 0
 --- !u!50 &4581573915147336821
 Rigidbody2D:
@@ -240,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4581573915407037028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24851894, y: -0.5566969, z: 0}
+  m_LocalPosition: {x: 0.237, y: -0.585, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
